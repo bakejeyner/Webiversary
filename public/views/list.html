@@ -1,0 +1,13 @@
+<div class="jumbotron text-center">
+    <h1>One hell of a list</h1>
+    <ul>
+    	<li ng-repeat='list in lists'>What: {{ list.what }}. Why: {{ list.why }}</li>
+    	</li>
+    </ul>
+
+    <input type='text' ng-model='listWhat'>
+    <input type='text' ng-model='listWhy'>
+
+    <input type='button' ng-click='newList()'>
+    <div> {{ listWhat }}, {{ listWhy }} </div>
+</div>

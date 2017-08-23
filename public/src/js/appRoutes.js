@@ -8,10 +8,10 @@ angular.module( 'appRoutes', [] ).config( [ '$routeProvider', '$locationProvider
 			controller: 'HomeController'
 		} )
 
-		// subpage that will use the SubpageController
-		.when( '/subpage', {
-			templateUrl: 'views/subpage.html',
-			controller: 'SubpageController'
+		// list that will use the ListController
+		.when( '/list', {
+			templateUrl: 'views/list.html',
+			controller: 'ListController'
 		} );
 
 	$locationProvider.html5Mode( true );

@@ -6,6 +6,7 @@ var mongoose = require( 'mongoose' );
 var app = express();
 var bodyParser = require( 'body-parser' );
 var methodOverride = require( 'method-override' );
+var path = require('path');
 
 // configuration ===========================================
 
@@ -17,6 +18,8 @@ var port = process.env.PORT || 8080;
 
 // connect to our mongoDB database
 mongoose.connect( process.env.MONGOLAB_URI || db.url );
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json
@@ -36,6 +39,11 @@ app.use( express.static( __dirname + '/public' ) );
 
 // routes ==================================================
 require( './app/routes' )( app ); // configure our routes
+
+// route to handle all angular requests
+app.get('*', function(req, res) {
+	res.sendFile(path.join(__dirname, './public/index.html'));
+});
 
 // start app ===============================================
 app.listen( port );

@@ -1,8 +1,7 @@
 // app/routes.js
 
 // grab the nerd model we just created
-var Nerd = new require('./models/nerd');
-var path = require('path');
+var List = new require('./models/list');
 
 module.exports = function(app) {
 
@@ -10,27 +9,64 @@ module.exports = function(app) {
 	// handle things like api calls
 	// authentication routes
 
-	// sample api route
-	app.get('/api/nerds', function(req, res) {
-		// use mongoose to get all nerds in the database
-		Nerd.find(function(err, nerds) {
+	// get all lists
+	app.get('/api/list', function(req, res) {
+		// use mongoose to get all lists in the database
+		List.find({}).exec( function(err, lists) {
 
-			// if there is an error retrieving, send the error.
-			// nothing after res.send(err) will execute
 			if (err)
+			{
+				res.status(400);
 				res.send(err);
+				return;
+			}
 
-			res.json(nerds); // return all nerds in JSON format
+			res.json(lists); // return all lists in JSON format
+			return;
 		});
 	});
 
-	// route to handle creating goes here (app.post)
+	// post new list
+	app.post('/api/list', function(req, res) {
+		console.log('post to db hit');
+		if (req.body.what == null || req.body.what == '')
+		{
+			res.status(400);
+			res.send('None shall pass!');
+			return;
+		}
+		if (req.body.why == null || req.body.why == '')
+		{
+			res.status(400);
+			res.send('None shall pass!');
+			return;
+		}
+
+		console.log('passed empty set tests');
+		
+		//make a new list to save
+		var tempList = new List({
+			what: req.body.what,
+			why: req.body.why
+		});
+
+		console.log('made the temp list');
+
+		//save the new list
+		tempList.save( function (err) {
+			if (err)
+			{
+				res.status(400);
+				res.send(err);
+				return;
+			}
+			res.json({ message: 'List Created!' });
+			return;
+		})
+	});
+
 	// route to handle delete goes here (app.delete)
 
 	// frontend routes =========================================================
-	// route to handle all angular requests
-	app.get('*', function(req, res) {
-		res.sendFile(path.join(__dirname, '../public/index.html'));
-	});
 
 };

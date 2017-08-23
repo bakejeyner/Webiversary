@@ -18,7 +18,7 @@ var buffer = require( 'vinyl-buffer' );
 var src = './public/src/';
 var dist = './public/dist/';
 var appFile = 'app.js';
-var lessFiles = src + 'less/**/*.less';
+var lessFiles = src + 'less/*';
 
 gulp.task( 'compile', function () {
 	var bundler = browserify( src + 'js/' + appFile, { debug: true } ).transform( babel );
