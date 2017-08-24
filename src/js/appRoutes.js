@@ -4,15 +4,19 @@ angular.module( 'appRoutes', [] ).config( [ '$routeProvider', '$locationProvider
 
 	// home page
 		.when( '/', {
-			templateUrl: 'views/home.html',
+			templateUrl: 'dist/html/views/home.html',
 			controller: 'HomeController'
 		} )
 
 		// list that will use the ListController
 		.when( '/list', {
-			templateUrl: 'views/list.html',
+			templateUrl: 'dist/html/views/list.html',
 			controller: 'ListController'
-		} );
+		} )
+
+		.otherwise({
+			redirectTo: '/'
+		});
 
 	$locationProvider.html5Mode( true );
 

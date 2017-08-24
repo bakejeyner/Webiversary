@@ -15,7 +15,7 @@ angular.module('ListFact', [] )
 
 	// call to POST and create a new list
 	factory.createList = function ( what, why ) {
-		$http({
+		return $http({
 			method: 'POST',
 			url: '/api/list',
 			data: {
@@ -29,14 +29,28 @@ angular.module('ListFact', [] )
 		});
 	};
 
+	factory.updateList = function ( id, done ) {
+		return $http({
+			method: 'PUT',
+			url: '/api/list/',
+			data: {
+				id: id,
+				done: done
+			}
+		}).then( function successCallback (res) {
+			console.log("Successful Put!");
+		}, function errorCallback (res) {
+			console.log("Unsuccessful Put.");
+		});
+	}
+
 	// call to DELETE a list by what
 	factory.deleteListByDone = function ( ) {
-		$http({
+		return $http({
 			method: 'DELETE',
 			url: '/api/list/done',
 		}).then( function successCallback (res) {
 			console.log("Successful Delete!");
-			facory.getAllLists();
 		}, function errorCallback (res) {
 			console.log("Unsuccessful Delete.");
 		});

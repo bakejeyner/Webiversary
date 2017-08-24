@@ -35,14 +35,15 @@ app.use( bodyParser.urlencoded( { extended: true } ) );
 app.use( methodOverride( 'X-HTTP-Method-Override' ) );
 
 // set the static files location /public/img will be /img for users
-app.use( express.static( __dirname + '/public' ) );
+app.use( express.static( __dirname + '/public' , {
+	fallthrough: true,
+}));
 
-// routes ==================================================
-require( './app/routes' )( app ); // configure our routes
+require('./db/routes/routes')(app);
 
 // route to handle all angular requests
-app.get('*', function(req, res) {
-	res.sendFile(path.join(__dirname, './public/index.html'));
+app.get("*", function(req, res) {
+	res.sendFile(path.join(__dirname, 'public/dist/html/index.html'));
 });
 
 // start app ===============================================
