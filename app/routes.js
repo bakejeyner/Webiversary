@@ -10,7 +10,7 @@ module.exports = function(app) {
 	// authentication routes
 
 	// get all lists
-	app.get('/api/list', function(req, res) {
+	app.get('/api/list/all', function(req, res) {
 		// use mongoose to get all lists in the database
 		List.find({}).exec( function(err, lists) {
 
@@ -25,6 +25,7 @@ module.exports = function(app) {
 			return;
 		});
 	});
+
 
 	// post new list
 	app.post('/api/list', function(req, res) {
@@ -47,7 +48,8 @@ module.exports = function(app) {
 		//make a new list to save
 		var tempList = new List({
 			what: req.body.what,
-			why: req.body.why
+			why: req.body.why,
+			done: false
 		});
 
 		console.log('made the temp list');
@@ -65,7 +67,23 @@ module.exports = function(app) {
 		})
 	});
 
+
 	// route to handle delete goes here (app.delete)
+	app.delete("/api/list", function(req, res) {
+		List.find({ done: true }).remove().exec( function(err, lists) {
+
+			if (err)
+			{
+				res.status(400);
+				res.send(err);
+				return;
+			}
+
+			res.status(200);
+			res.JSON("");
+			return;
+		});
+	});
 
 	// frontend routes =========================================================
 

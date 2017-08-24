@@ -14,9 +14,18 @@
     "angular-route": "^1.5.3",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
+    "express-livereload": "0.0.24",
+    "gulp-jshint": "^2.0.4",
+    "gulp-livereload": "^3.8.1",
+    "gulp-sass": "^3.1.0",
+    "jshint": "^2.9.5",
+    "less": "^2.7.2",
     "method-override": "^2.3.5",
     "mongoose": "^4.4.10",
-    "path": "^0.12.7"
+    "node-sass": "^4.5.3",
+    "path": "^0.12.7",
+    "reload": "^2.2.2",
+    "sass": "^1.0.0-beta.2"
   },
   "devDependencies": {
     "babelify": "^7.2.0",

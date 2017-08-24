@@ -5,7 +5,7 @@ angular.module('ListFact', [] )
 
 	// call to get all users
 	factory.getAllLists = function () {
-		return $http.get( '/api/list' )
+		return $http.get( '/api/list/all' )
 		.then( function (data) {
 			return data;
 		});
@@ -20,7 +20,7 @@ angular.module('ListFact', [] )
 			url: '/api/list',
 			data: {
 				what: what,
-				why: why
+				why: why,
 			}
 		}).then( function successCallback (res) {
 			console.log("Successful Post!");
@@ -30,34 +30,17 @@ angular.module('ListFact', [] )
 	};
 
 	// call to DELETE a list by what
-	factory.deleteListByWhat = function ( what ) {
+	factory.deleteListByDone = function ( ) {
 		$http({
 			method: 'DELETE',
-			url: '/api/list/what',
-			data: {
-				what: what
-			}
+			url: '/api/list/done',
 		}).then( function successCallback (res) {
 			console.log("Successful Delete!");
+			facory.getAllLists();
 		}, function errorCallback (res) {
 			console.log("Unsuccessful Delete.");
 		});
 	};
-
-	// call to DELETE a list by why
-	factory.deleteListByWhy = function ( why ) {
-		$http({
-			method: 'DELETE',
-			url: '/api/list/why',
-			data: {
-				why: why
-			}
-		}).then( function successCallback (res) {
-			console.log("Successful Delete!");
-		}, function errorCallback (res) {
-			console.log("Unsuccessful Delete.");
-		});
-	}
 
 	return factory;
 }]);

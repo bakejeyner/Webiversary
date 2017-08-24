@@ -1,9 +1,11 @@
 <div class="jumbotron text-center">
     <h1>One hell of a list</h1>
-    <ul>
-    	<li ng-repeat='list in lists'>What: {{ list.what }}. Why: {{ list.why }}</li>
-    	</li>
-    </ul>
+    
+    <div class="checkbox-container" ng-repeat="list in lists">
+    	<input class="checkbox-box" id="{{list.what}}" type="checkbox">
+    	<label class="checkbox-label" for="{{list.what}}">{{list.what}}, {{list.why}}</label>
+    </div>
+
 
     <input type='text' ng-model='listWhat'>
     <input type='text' ng-model='listWhy'>

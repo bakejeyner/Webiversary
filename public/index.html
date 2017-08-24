@@ -1,25 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html ng-app="myApp" ng-style="{'background-image' : 'url(img/lake-top.jpg)'}">
 <head>
     <meta charset="UTF-8">
     <base href="/">
     <title>MEANstarter</title>
-    <link rel="stylesheet" href="dist/css/styles.min.css">
+    <link rel="stylesheet" href="dist/css/index.css">
     <script src="dist/js/app.min.js"></script>
 </head>
-<body ng-app="myApp" ng-controller="HomeController">
-<div class="container">
-    <nav class="navbar">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">MEANstarter</a>
-        </div>
+<body>
+<div class="navbar">
+    <div class="navbar-header">
+        <img onclick="location.href='/'" class="navbar-img" src ="img/happy-anniversary.jpg">
+    </div>
 
-        <ul class="navbar-nav">
-            <li><a href="/list">List</a></li>
-            <li><a href="/flashcard">Flashcards</a></li>
-        </ul>
-    </nav>
-    <div ng-view></div>
+    <div class="navbar-nav">
+        <div class="navbar-entry" onclick="location.href='/list'">List</div>
+        <div class="navbar-entry" onclick="location.href='/flashcard'">Flashcards</div>
+    </div>
 </div>
+<div ng-view></div>
 </body>
 </html>
