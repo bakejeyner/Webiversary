@@ -1,0 +1,50 @@
+/* actual flashcard css */
+
+#flashcard-display-flashcard {
+  height: 300px;
+  width: 500px;
+  margin: 10% auto;
+  border: 1px solid gray;
+  box-shadow: 2px 2px 2px #000;
+  -webkit-transform-style: preserve-3d;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1;
+}
+
+.flipped, #flashcard-back {
+  transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
+}
+
+#flashcard-front, #flashcard-back {
+  height: 300px;
+  width: 500px;
+  position: absolute;
+  text-align: center;
+  -webkit-backface-visibility: hidden;
+  z-index: 0;
+}
+
+#flashcard-front-text, #flashcard-back-text {
+  margin-top: 25%;
+  font-size: 3em;
+  z-index: 0;
+}
+
+
+
+
+/* my css */
+
+#flashcard-display {
+	&:focus {
+		outline: none;
+	}
+}
+
+.flashcard-arrow {
+	font-size: 40px;
+}

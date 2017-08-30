@@ -1,17 +1,19 @@
 <div class="jumbotron text-center">
+	<link rel="stylesheet" href="dist/css/list.css">
+
     <h1>One hell of a list</h1>
     
+    <button ng-click='selectAll()'>Select All</button>
+    <button ng-click='unselectAll()'>UnSelect All</button>
+
     <div class="checkbox-container" ng-repeat="list in lists">
     	<input class="checkbox-box" ng-model="list.done" id="{{list._id}}" type="checkbox">
-    	<label class="checkbox-label" for="{{list._id}}">{{list.what}}, {{list.why}}</label>
+    	<label class="checkbox-label" for="{{list._id}}">{{list.what}}</label>
     </div>
 
 
-    <input type='text' ng-model='listWhat'>
-    <input type='text' ng-model='listWhy'>
+    <input type='text' ng-model='listWhat' onfocus='this.select()'>
 
     <button ng-click='newList()'>Add Task</button>
-    
-
     <button ng-click='removeDone()'>Remove Finished Tasks</button>
 </div>

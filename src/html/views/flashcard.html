@@ -1,0 +1,51 @@
+<div id="flashcard-body">
+
+	<link rel="stylesheet" href="dist/css/flashcard.css">
+
+	<div id="flashcard-display" tabindex="0" ng-keyup="keyCard($event)" ng-hide="!view.display">
+
+		<div id="flashcard-left-arrow" class="flashcard-arrow" ng-click="nextCard()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></div>
+
+		<div id="flashcard-display-flashcard" ng-class="flipped ? 'flipped' : ''" ng-click="flashcardClick()">
+			<div id="flashcard-front">
+				<div id="flashcard-front-text">{{flashcards[randomIndexes[currentIndex]].frontText}}</div>
+			</div>
+
+			<div id="flashcard-back">
+				<div id="flashcard-back-text">{{flashcards[randomIndexes[currentIndex]].backText}}</div>
+			</div>
+		</div>
+
+		<div id="flashcard-right-arrow" class="flashcard-arrow" ng-click="prevCard()"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></div>
+
+		<button id="flashcard-next-button" class="flashcard-display-button" ng-click="nextCard()">Next Card</button>
+
+		<button id="flashcard-shuffle-button" class="flashcard-display-button" ng-click="shuffleFlashcards()">Shuffle!</button>
+	</div>
+
+	<div id="flashcard-modify" ng-hide="!view.modify">
+		<div class="flashcard-modify-containers" ng-repeat="flashcard in flashcards">
+			<div class="flashcard-modify-front">
+				<input type="text" class="flashcard-modify-input" ng-model="flashcard.frontText" ng-blur="updateFlashcard(flashcard)" ng-keyup="blurField($event)">
+			</div>
+			<div class="flashcard-modify-back">
+				<input type="text" class="flashcard-modify-input" ng-model="flashcard.backText" ng-blur="updateFlashcard(flashcard)" ng-keyup="blurField($event)">
+			</div>
+		</div>
+
+		<div class="flashcard-modify-containers">
+			<div class="flashcard-modify-front">
+				<input type="text" class="flashcard-modify-input" ng-model="frontText">
+			</div>
+			<div class="flashcard-modify-back">
+				<input type="text" class="flashcard-modify-input" ng-model="backText">
+			</div>
+		</div>
+
+		<button id="flashcard-add-button" class="flashcard-modify-button" ng-click="createFlashcard()">Create Flashcard</button>
+	</div>
+
+	<button id="flashcard-display-button" class="flashcard-functionality-button" ng-click="displayViewChange()">Do Your Flashcards</button>
+	<button id="flashcard-modify-button" class="flashcard-functionality-button" ng-click="modifyViewChange()">Modify Your Flashcards</button>
+
+</div>

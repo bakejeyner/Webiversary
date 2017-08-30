@@ -38,8 +38,6 @@ module.exports = function(app) {
 			res.send('None shall pass!');
 			return;
 		}
-
-		console.log('passed empty set tests');
 		
 		//make a new list to save
 		var tempList = new List({
@@ -47,8 +45,6 @@ module.exports = function(app) {
 			why: req.body.why,
 			done: false
 		});
-
-		console.log('made the temp list');
 
 		//save the new list
 		tempList.save( function (err) {

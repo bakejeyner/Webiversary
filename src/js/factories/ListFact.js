@@ -44,11 +44,10 @@ angular.module('ListFact', [] )
 		});
 	}
 
-	// call to DELETE a list by what
 	factory.deleteListByDone = function ( ) {
 		return $http({
 			method: 'DELETE',
-			url: '/api/list/done',
+			url: '/api/list/done'
 		}).then( function successCallback (res) {
 			console.log("Successful Delete!");
 		}, function errorCallback (res) {

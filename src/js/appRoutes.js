@@ -14,6 +14,11 @@ angular.module( 'appRoutes', [] ).config( [ '$routeProvider', '$locationProvider
 			controller: 'ListController'
 		} )
 
+		.when( '/flashcard', {
+			templateUrl: 'dist/html/views/flashcard.html',
+			controller: 'FlashcardController'
+		} )
+
 		.otherwise({
 			redirectTo: '/'
 		});

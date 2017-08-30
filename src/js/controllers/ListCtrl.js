@@ -1,10 +1,11 @@
 angular.module( 'ListCtrl' , [] )
 .controller( 'ListController', [ '$scope', 'ListFactory', function ( $scope,  ListFactory ) {
 
-	//initial values
+	//initial setup **************************************************************************
 	$scope.listWhat = 'What?';
 	$scope.listWhy = 'Why?';
 	$scope.listDone = false;
+
 
 	$scope.lists = [];
 
@@ -16,6 +17,12 @@ angular.module( 'ListCtrl' , [] )
 		})
 	};
 	getLists();
+
+	//set value of all selected
+	$scope.allSelected = false
+
+	//end initial setup **********************************************************************
+
 
 	//update all the lists in the db
 	var updateAllLists = function () {
@@ -29,17 +36,34 @@ angular.module( 'ListCtrl' , [] )
 
 	//clicked button
 	$scope.newList = function () {
+		$scope.allSelected = false;
 		ListFactory.createList($scope.listWhat, $scope.listWhy)
 		.then(getLists());
 	};
 
 	$scope.removeDone = function () {
+		$scope.allSelected = false;
+
 		updateAllLists();
 
 		ListFactory.deleteListByDone()
 		.then( function (list) {
 			getLists();
 		});
+	};
+
+	$scope.selectAll = function() {
+		
+		for (index in $scope.lists) $scope.lists[index].done = true;
+		updateAllLists()
+
+	};
+
+	$scope.unselectAll = function() {
+		
+		for (index in $scope.lists) $scope.lists[index].done = false;
+		updateAllLists()
+	
 	};
 
 }]);
