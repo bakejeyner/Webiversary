@@ -73,8 +73,8 @@ module.exports = function (app) {
 
 
 	// delete flashcard
-	app.delete("/api/list/done", function(req, res) {
-		List.remove({ _id: req.body.id }).exec(function (err, list) {
+	app.delete("/api/list/", function(req, res) {
+		Flashcard.remove({ _id: req.body.id }).exec(function (err, flashcard) {
 			if (err)
 			{
 				res.status(400);

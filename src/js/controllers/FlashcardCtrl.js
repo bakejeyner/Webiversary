@@ -66,21 +66,28 @@ angular.module("FlashcardCtrl", [])
 
 	// display functions ************************************************************
 	
-	$scope.flashcardClick = function () {
+	$scope.flipCard = function () {
 		$scope.flipped = !$scope.flipped;
 	};
 
 	$scope.keyCard = function ( $event ) {
 
-		//if left arrow or up arrow is typed go to previous card
-		if ($event.which == 37 || $event.which == 38)
+		//if enter or spacebar is typed flip the card
+		if ($event.which == 13 || $event.which == 32)
+		{
+			$scope.flipCard();
+			return;
+		}
+
+		//if left arrow is typed go to previous card
+		if ($event.which == 37)
 		{
 			$scope.prevCard()
 			return;
 		}
 
-		//if enter or right arrow or down arrow is typed go to next card
-		if ($event.which == 13 || $event.which == 39 || $event.which == 40)
+		//if right arrow is typed go to next card
+		if ($event.which == 39)
 		{
 			$scope.nextCard()
 			return;
@@ -97,9 +104,9 @@ angular.module("FlashcardCtrl", [])
 		else $scope.currentIndex++;
 	}
 
-	$scope.shuffleFlashcards = function () {
+	$scope.shuffleCards = function () {
 		shuffleArray($scope.randomIndexes);
-		currentIndex = 0;
+		$scope.nextCard();
 	};
 
 	// end display functions ********************************************************
@@ -110,13 +117,19 @@ angular.module("FlashcardCtrl", [])
 		if (event.which == 13) $event.target.blur();
 	};
 
-	// end modify functions *********************************************************
-
-
 	$scope.updateFlashcard = function ( flashcard ) {
-
 		FlashcardFactory.updateFlashcard(flashcard._id, flashcard.frontText, flashcard.backText);
 	};
+
+	$scope.deleteFlashcard = function ( flashcard ) {
+		FlashcardFactory.deleteFlashcard( flashcard._id )
+		.then( function () {
+			getFlashcards();
+		});
+	};
+
+	// end modify functions *********************************************************
+
 
 	// view changes
 	$scope.displayViewChange = function () {

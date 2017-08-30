@@ -44,7 +44,10 @@ angular.module("FlashcardFact", [])
 	factory.deleteFlashcard = function ( id ) {
 		return $http({
 			method: 'DELETE',
-			url: '/api/list/done',
+			url: '/api/list/',
+			headers: {
+				"Content-Type": "application/json"
+			},
 			data: {
 				id: id
 			}
