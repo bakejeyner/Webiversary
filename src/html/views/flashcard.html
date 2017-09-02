@@ -80,10 +80,10 @@
 					<div class="flashcard-middle-line" ></div>
 					<div class="flashcard-middle-line" ></div>
 					<div class="flashcard-middle-line" ></div>
-					<div class="flashcard-modify-input"><textarea ng-model="frontText"></textarea></div>
+					<div class="flashcard-modify-input"><textarea onfocus="this.select()" ng-model="frontText"></textarea></div>
 				</div>
 				<div class="flashcard-modify-back">
-					<div class="flashcard-modify-input"><textarea ng-model="backText"></textarea></div>
+					<div class="flashcard-modify-input"><textarea onfocus="this.select()" ng-model="backText"></textarea></div>
 				</div>
 				<button id="flashcard-add-button" class="flashcard-modify-button general-button" ng-click="createFlashcard()">Create Flashcard</button>
 			</div>
