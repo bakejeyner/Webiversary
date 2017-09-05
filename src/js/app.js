@@ -7,6 +7,8 @@ var ListCtrl = require( './controllers/ListCtrl' );
 var ListFact = require( './factories/ListFact' );
 var FlashcardCtrl = require( './controllers/FlashcardCtrl' );
 var FlashcardFact = require( './factories/FlashcardFact' );
+var IndexCtrl = require( './controllers/IndexCtrl' );
+var IndexFact = require( './factories/IndexFact' );
 
 angular.module( 'myApp', [
 	'ngRoute',
@@ -16,7 +18,9 @@ angular.module( 'myApp', [
 	'ListCtrl',
 	'ListFact',
 	'FlashcardCtrl',
-	'FlashcardFact'
+	'FlashcardFact',
+  'IndexCtrl',
+  'IndexFact'
 ] )
 .directive('animateOnChange', function($timeout) {
   return function(scope, element, attr) {

@@ -21,7 +21,7 @@ angular.module("FlashcardCtrl", [])
 		FlashcardFactory.getAllFlashcards()
 		.then( function (flashcards) {
 			$scope.flashcards = JSON.parse(JSON.stringify(flashcards.data));
-			$scope.randomIndexes = Array.from(new Array($scope.flashcards.length), (x,i) => i)
+			$scope.randomIndexes = Array.from(new Array($scope.flashcards.length), (x,i) => i);
 		});
 	}
 	getFlashcards();

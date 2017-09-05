@@ -160,7 +160,7 @@
 //toolbar
 #flashcard-toolbar {
 	position: absolute;
-	bottom: 10px;
+	bottom: 60px;
 	width: 100%;
 
 	display: flex;
@@ -188,7 +188,6 @@
 
 #flashcard-modify-existing {
 	width: 100%;
-	min-height: 550px;
 	height: auto;
 	-webkit-column-count: 2;
 	column-count: 2;
