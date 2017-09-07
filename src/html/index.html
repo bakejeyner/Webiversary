@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="myApp" ng-controller="IndexController" ng-style="{'background-image' : 'url(img/lake-top.jpg)'}">
+<html ng-app="myApp" ng-controller="IndexController">
 <head>
     <meta charset="UTF-8">
     <base href="/">
@@ -9,26 +9,47 @@
     <script src="dist/js/app.js"></script>
 </head>
 <body>
+<div class="background" ng-style="{'background-image' : 'url(' + backgroundImageUrls[randomBackgroundIndexes[currentBackgroundIndex]] + ')'}"></div>
     <div class="navbar">
         <div class="navbar-header">
-            <img onclick="location.href='/'" class="navbar-img" src ="img/happy-anniversary.jpg">
+            <a ng-href="/?timeElapsed={{timeElapsed}}">
+                <img class="navbar-img" src ="img/happy-anniversary.jpg">
+            </a>
         </div>
 
         <div class="navbar-nav">
-            <div class="navbar-entry general-button" onclick="location.href='/list'">List</div>
-            <div class="navbar-entry general-button" onclick="location.href='/flashcard'">Flashcards</div>
+            <a ng-href="/list?timeElapsed={{timeElapsed}}">
+               <div class="navbar-entry general-button" ng-click="location.href='/list?timeElapsed={{timeElapsed}}'">List</div>
+            </a>
+            <a ng-href="/flashcard?timeElapsed={{timeElapsed}}">
+                <div class="navbar-entry general-button" ng-click="location.href='/flashcard?timeElapsed={{timeElapsed}}'">Flashcards</div>
+            </a>
         </div>
     </div>
 
     <div ng-view class="view"></div>
 
     <div class="music-container">
+        <div class="music-icons pause-play-song music-left" ng-click="pausePlaySong()"><i class="fa {{paused ? 'fa-play' : 'fa-pause'}}" aria-hidden="true"></i></div>
+        <div class="music-time music-left">
+            {{ floor(musicPlayer.currentTime/60) | number:00 }}:{{ floor(musicPlayer.currentTime%60) > 9 ? "" : "0" }}{{ floor(musicPlayer.currentTime%60) | number:0 }}/
+            {{ musicPlayer.duration/60 | number:0 }}:{{ musicPlayer.duration%60 | number:0 }}
+        </div>
+
+
+        <div class="music-slider">
+            <div><input type="range" step=".000001" min="0" max="{{musicPlayer.duration}}" ng-model="musicPlayer.currentTime"></div>
+        </div>
+
+
+        <div class="music-icons music-right prev-song" ng-click="prevSong()"><i class="fa fa-step-backward" aria-hidden="true"></i></div>
+        <div class="music-icons music-right next-song" ng-click="nextSong()"><i class="fa fa-step-forward" aria-hidden="true"></i></div>
+        <div class="music-icons music-right shuffle" ng-click="shuffleSongs()"><i class="fa fa-random" aria-hidden="true"></i></div>
+
         <div class="music-player">
-            <audio autoplay controls volume=".2" src="{{musicSource}}">
-            <div class="music-icons prev-song" ng-click="prevSong()"><i class="fa fa-caret-left" aria-hidden="true"></i></div>
-            <div class="music-icons next-song" ng-click="nextSong()"><i class="fa fa-caret-right" aria-hidden="true"></i></div>
-            <div class="music-icons shuffle" ng-click="shuffleSongs()"><i class="fa fa-random" aria-hidden="true"></i></div>
+            <audio class="audio" autoplay="true" my-audio src="{{songs[randomIndexes[currentIndex]].url}}"></audio>
         </div>
     </div>
+
 </body>
 </html>

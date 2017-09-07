@@ -33,4 +33,20 @@ angular.module( 'myApp', [
       }
     });
   };
+})
+.directive("myAudio", function(){
+    return function(scope, element, attr) {
+        console.log(element);
+        console.log(element[0].volume);
+        scope.musicPlayer = element[0];
+        scope.musicPlayer.volume = .05;
+
+        element.bind("timeupdate", function() {
+            scope.$apply();
+        });
+        element.bind("ended", function() {
+            scope.nextSong();
+            scope.$apply();
+        });
+    }
 });

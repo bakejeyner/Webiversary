@@ -2,7 +2,8 @@ angular.module("IndexFact", [])
 .factory("IndexFactory", [ "$http", function ($http) {
 	var factory = {};
 
-	var songUrl = "mp3/"
+	var imgUrl = "img/";
+	var songUrl = "mp3/";
 
 	factory.getAllSongs = function () {
 		return [
@@ -19,6 +20,19 @@ angular.module("IndexFact", [])
 			}
 		];
 	};
+
+	factory.getBackgroundImageUrls = function () {
+		return [
+			imgUrl + "wormz.png",
+			imgUrl + "vintage-concrete.png",
+			imgUrl + "doodles.png",
+			imgUrl + "skyscraper.png",
+			imgUrl + "memphis-colorful.png",
+			imgUrl + "gaming-pattern.png",
+			imgUrl + "organic-tiles.png",
+			imgUrl + "vertical-waves.png"
+		];
+	}
 
 	return factory;
 }])

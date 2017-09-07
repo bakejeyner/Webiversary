@@ -32,11 +32,11 @@
 }
 
 .flashcard-back {
-	z-index: 1;
+	z-index: 2;
 }
 
 .flashcard-front {
-	z-index: 0;
+	z-index: 1;
 }
 
 .flashcard-front, .flashcard-back {
@@ -215,6 +215,7 @@
 	height: 120px;
 	background: white;
 	margin: 15px;
+	box-shadow: 2px 2px 2px #000;
 }
 
 .flashcard-modify-input {
@@ -226,6 +227,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	border: black solid 1px;
 
 	> textarea {
 		display: inline-block;
