@@ -3,6 +3,7 @@ var ngRoute = require( 'angular-route' );
 
 var appRoutes = require( './appRoutes' );
 var HomeCtrl = require( './controllers/HomeCtrl' );
+var HomeFact = require( './factories/HomeFact' );
 var ListCtrl = require( './controllers/ListCtrl' );
 var ListFact = require( './factories/ListFact' );
 var FlashcardCtrl = require( './controllers/FlashcardCtrl' );
@@ -15,6 +16,7 @@ angular.module( 'myApp', [
 
 	'appRoutes',
 	'HomeCtrl',
+  'HomeFact',
 	'ListCtrl',
 	'ListFact',
 	'FlashcardCtrl',
@@ -34,10 +36,8 @@ angular.module( 'myApp', [
     });
   };
 })
-.directive("myAudio", function(){
+.directive("musicPlayer", function(){
     return function(scope, element, attr) {
-        console.log(element);
-        console.log(element[0].volume);
         scope.musicPlayer = element[0];
         scope.musicPlayer.volume = .05;
 

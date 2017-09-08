@@ -54,10 +54,10 @@
 							<div class="flashcard-middle-line" ></div>
 							<div class="flashcard-middle-line" ></div>
 							<div class="flashcard-middle-line" ></div>
-							<div class="flashcard-modify-input"><textarea ng-model="flashcard.frontText" ng-blur="updateFlashcard(flashcard)" ng-keyup="blurField($event)"></textarea></div>
+							<div class="flashcard-modify-input"><textarea onfocus="this.select()" ng-model="flashcard.frontText" ng-blur="updateFlashcard(flashcard)" ng-keyup="blurField($event)"></textarea></div>
 						</div>
 						<div class="flashcard-modify-back">
-							<div class="flashcard-modify-input"><textarea ng-model="flashcard.backText" ng-blur="updateFlashcard(flashcard)" ng-keyup="blurField($event)"></textarea></div>
+							<div class="flashcard-modify-input"><textarea onfocus="this.select()" ng-model="flashcard.backText" ng-blur="updateFlashcard(flashcard)" ng-keyup="blurField($event)"></textarea></div>
 						</div>
 						<div class="flashcard-modify-delete" ng-click="deleteFlashcard(flashcard)"><i class="fa fa-trash" aria-hidden="true"></i></div>
 					</div>
@@ -83,7 +83,7 @@
 				<div class="flashcard-modify-back">
 					<div class="flashcard-modify-input"><textarea onfocus="this.select()" ng-model="backText"></textarea></div>
 				</div>
-				<button id="flashcard-add-button" class="flashcard-modify-button general-button" ng-click="createFlashcard()"><i class="fa fa-plus-square" aria-hidden="true"></i>   Create Flashcard</button>
+				<button id="flashcard-add-button" class="flashcard-modify-button general-button" ng-click="createFlashcard()"><i class="fa fa-plus-square" aria-hidden="true"></i>Create Flashcard</button>
 			</div>
 		</div>
 	</div>

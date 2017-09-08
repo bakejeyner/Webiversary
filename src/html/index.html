@@ -12,17 +12,17 @@
 <div class="background" ng-style="{'background-image' : 'url(' + backgroundImageUrls[randomBackgroundIndexes[currentBackgroundIndex]] + ')'}"></div>
     <div class="navbar">
         <div class="navbar-header">
-            <a ng-href="/?timeElapsed={{timeElapsed}}">
+            <a ng-href="/">
                 <img class="navbar-img" src ="img/happy-anniversary.jpg">
             </a>
         </div>
 
         <div class="navbar-nav">
-            <a ng-href="/list?timeElapsed={{timeElapsed}}">
-               <div class="navbar-entry general-button" ng-click="location.href='/list?timeElapsed={{timeElapsed}}'">List</div>
+            <a ng-href="/list">
+               <div class="navbar-entry general-button"">List</div>
             </a>
-            <a ng-href="/flashcard?timeElapsed={{timeElapsed}}">
-                <div class="navbar-entry general-button" ng-click="location.href='/flashcard?timeElapsed={{timeElapsed}}'">Flashcards</div>
+            <a ng-href="/flashcard">
+                <div class="navbar-entry general-button">Flashcards</div>
             </a>
         </div>
     </div>
@@ -30,7 +30,7 @@
     <div ng-view class="view"></div>
 
     <div class="music-container">
-        <div class="music-icons pause-play-song music-left" ng-click="pausePlaySong()"><i class="fa {{paused ? 'fa-play' : 'fa-pause'}}" aria-hidden="true"></i></div>
+        <div class="music-icons pause-play-song music-left" ng-click="pausePlaySong()"><div class="music-icon-inner"><i class="fa {{paused ? 'fa-play' : 'fa-pause'}}" aria-hidden="true"></i></div></div>
         <div class="music-time music-left">
             {{ floor(musicPlayer.currentTime/60) | number:00 }}:{{ floor(musicPlayer.currentTime%60) > 9 ? "" : "0" }}{{ floor(musicPlayer.currentTime%60) | number:0 }}/
             {{ musicPlayer.duration/60 | number:0 }}:{{ musicPlayer.duration%60 | number:0 }}
@@ -41,13 +41,22 @@
             <div><input type="range" step=".000001" min="0" max="{{musicPlayer.duration}}" ng-model="musicPlayer.currentTime"></div>
         </div>
 
+        <div class="music-icons music-volume">
+            <div class="music-icon-inner" ng-if="musicPlayer.volume > .33" ng-click="muteVolume()"><i class="fa fa-volume-up" aria-hidden="true"></i></div>
+            <div class="music-icon-inner" ng-if="musicPlayer.volume <= .33 && musicPlayer.volume > 0" ng-click="muteVolume()"><i class="fa fa-volume-down" aria-hidden="true"></i></div>
+            <div class="music-icon-inner" ng-if="musicPlayer.volume == 0" ng-click="unmuteVolume()"><i class="fa fa-volume-off" aria-hidden="true"></i></div>
+            <div class="volume-slider">
+                <div><input type="range" step=".01" min="0" max="1" orient="vertical" ng-model="musicPlayer.volume"></div>
+            </div>
+        </div>
 
-        <div class="music-icons music-right prev-song" ng-click="prevSong()"><i class="fa fa-step-backward" aria-hidden="true"></i></div>
-        <div class="music-icons music-right next-song" ng-click="nextSong()"><i class="fa fa-step-forward" aria-hidden="true"></i></div>
-        <div class="music-icons music-right shuffle" ng-click="shuffleSongs()"><i class="fa fa-random" aria-hidden="true"></i></div>
+        <div class="music-icons music-icon-placeholder"></div>
+        <div class="music-icons music-right prev-song" ng-click="prevSong()"><div class="music-icon-inner"><i class="fa fa-step-backward" aria-hidden="true"></i></div></div>
+        <div class="music-icons music-right next-song" ng-click="nextSong()"><div class="music-icon-inner"><i class="fa fa-step-forward" aria-hidden="true"></i></div></div>
+        <div class="music-icons music-right shuffle" ng-click="shuffleSongs()"><div class="music-icon-inner"><i class="fa fa-random" aria-hidden="true"></i></div></div>
 
         <div class="music-player">
-            <audio class="audio" autoplay="true" my-audio src="{{songs[randomIndexes[currentIndex]].url}}"></audio>
+            <audio class="audio" autoplay="true" music-player src="{{songs[randomIndexes[currentIndex]].url}}"></audio>
         </div>
     </div>
 

@@ -14,6 +14,8 @@ angular.module("IndexCtrl", [])
 	$scope.randomBackgroundIndexes = Array.from(new Array($scope.backgroundImageUrls.length), (x,i) => i);
 	shuffleArray($scope.randomBackgroundIndexes);
 	$scope.currentBackgroundIndex = 0;
+
+	var prevVolume = .1;
 	//end initialization
 
 
@@ -50,6 +52,15 @@ angular.module("IndexCtrl", [])
 		{
 			$scope.musicPlayer.play();
 		}
+	};
+
+	$scope.muteVolume = function () {
+		prevVolume = $scope.musicPlayer.volume;
+		$scope.musicPlayer.volume = 0;
+	};
+
+	$scope.unmuteVolume = function () {
+		$scope.musicPlayer.volume = prevVolume;
 	};
 
 	$scope.prevSong = function () {

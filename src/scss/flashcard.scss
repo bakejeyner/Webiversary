@@ -174,9 +174,12 @@
 #flashcard-modify-existing-container {
 	width: 100%;
 	height: 365px;
-	margin-top: 20px;
 
-	border: solid 2px steelblue;
+	position: relative;
+	top:20px;
+
+	border-bottom: solid 2px steelblue;
+	border-top: solid 2px steelblue;
 
 	overflow-x: hidden;
 	overflow-y: auto;

@@ -1,31 +1,20 @@
-<div class="jumbotron text-center">
+<div class="home">
 	<link rel="stylesheet" href="dist/css/home.css">
+    <div class="home-container">
 
+        <div class="picture-frame">
 
-    <img src="img/backleg.jpg">
-    <img src="img/beauty.jpg">
-    <img src="img/brahan.png">
-    <img src="img/cassy.png">
-    <img src="img/ccpumpkin.jpg">
-    <img src="img/chins.jpg">
-    <img src="img/chubby-chekkey.jpeg">
-    <img src="img/cop.jpeg">
-    <img src="img/god.jpg">
-    <img src="img/jelley-swap.jpg">
-    <img src="img/jovin.png">
-    <img src="img/kayak.jpg">
-    <img src="img/kyler-swap.jpg">
-    <img src="img/larry.jpg">
-    <img src="img/no-nose.png">
-    <img src="img/nurse-joy.jpg">
-    <img src="img/nurse-legup.jpg">
-    <img src="img/nurse-plain.jpg">
-    <img src="img/ponder.jpg">
-    <img src="img/rickkin.jpg">
-    <img src="img/sexy.jpg">
-    <img src="img/sosilly.jpg">
-    <img src="img/tree-peen.png">
-    <img src="img/tyler.png">
-    <img src="img/unknowingly.png">
+            <div class="polaroids">
 
+                <div ng-repeat="picture in pictures" class="polaroid {{getIndexByPicture(picture) === focusedPicture  ? 'focused' : ''}}" onclick="this.focus()" ng-click="pictureClick(picture)" ng-blur="pictureBlur()" tabindex="1">
+                    <p>{{picture.comment}}</p>
+                    <img src="{{picture.url}}">
+                </div>
+
+            </div>
+
+            <div class="blackout {{focusedPicture == -1 ? '' : 'blackout-true'}}" ></div>
+
+        </div>
+    </div>
 </div>

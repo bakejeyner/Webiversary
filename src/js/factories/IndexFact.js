@@ -1,5 +1,5 @@
 angular.module("IndexFact", [])
-.factory("IndexFactory", [ "$http", function ($http) {
+.factory("IndexFactory", [ "$http", function($http) {
 	var factory = {};
 
 	var imgUrl = "img/";
