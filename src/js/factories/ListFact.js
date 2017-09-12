@@ -29,12 +29,13 @@ angular.module('ListFact', [] )
 		});
 	};
 
-	factory.updateList = function ( id, done ) {
+	factory.updateList = function ( id, what, done ) {
 		return $http({
 			method: 'PUT',
 			url: '/api/list/',
 			data: {
 				id: id,
+				what: what,
 				done: done
 			}
 		}).then( function successCallback (res) {
@@ -44,7 +45,7 @@ angular.module('ListFact', [] )
 		});
 	}
 
-	factory.deleteListByDone = function ( ) {
+	factory.deleteListByDone = function () {
 		return $http({
 			method: 'DELETE',
 			url: '/api/list/done'
@@ -52,6 +53,23 @@ angular.module('ListFact', [] )
 			console.log("Successful Delete!");
 		}, function errorCallback (res) {
 			console.log("Unsuccessful Delete.");
+		});
+	};
+
+	factory.deleteOne = function(id) {
+		return $http({
+			method: "DELETE",
+			url: "api/list/one",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			data: {
+				id: id
+			}
+		}).then( function successCallback (res) {
+			console.log("Successful Delete!");
+		}, function errorCallback (res) {
+			console.log("Unsucessful Delete.");
 		});
 	};
 

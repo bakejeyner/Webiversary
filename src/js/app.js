@@ -36,7 +36,7 @@ angular.module( 'myApp', [
     });
   };
 })
-.directive("musicPlayer", function(){
+.directive("musicPlayer", function() {
     return function(scope, element, attr) {
         scope.musicPlayer = element[0];
         scope.musicPlayer.volume = .05;
@@ -48,5 +48,30 @@ angular.module( 'myApp', [
             scope.nextSong();
             scope.$apply();
         });
-    }
-});
+    };
+})
+.directive('focusMe', ['$timeout', function ($timeout) {
+    return {
+        //scope: true,   // optionally create a child scope
+        link: function (scope, element, attr) {
+
+            scope.$watch(function() {
+                    return attr.focusMe;
+                },
+                function (value) {
+                    if (value === "true") {
+                        $timeout(function () {
+                            element[0].focus();
+                            element[0].select();
+                        });
+                    }  
+                });
+            // to address @blesh's comment, set attribute value to 'false'
+            // on blur event:
+            // element.bind('blur', function () {
+            //     console.log('blur');
+            //     scope.$apply(model.assign(scope, false));
+            // });
+        }
+    };
+}]);;

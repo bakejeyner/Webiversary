@@ -1,19 +1,32 @@
-<div class="jumbotron text-center">
-	<link rel="stylesheet" href="dist/css/list.css">
+<div class="list">
+    <link rel="stylesheet" href="dist/css/list.css">
 
-    <div>One hell of a list</div>
-    
-    <button ng-click='selectAll()'>Select All</button>
-    <button ng-click='unselectAll()'>UnSelect All</button>
+    <div class="list-container">
+        <div class="list-container-inner">
 
-    <div class="checkbox-container" ng-repeat="list in lists">
-    	<input class="checkbox-box" ng-model="list.done" id="{{list._id}}" type="checkbox">
-    	<label class="checkbox-label" for="{{list._id}}">{{list.what}}</label>
+            <div class="list-header">To-Do List</div>
+
+            
+            <button class="general-button" ng-click='selectAll()'>Select All</button>
+            <button class="general-button" ng-click='unselectAll()'>UnSelect All</button>
+
+            <div class="checkbox-container">
+
+                <div class="checkbox" my-list ng-repeat="list in lists">
+                	<input class="checkbox-box" ng-model="list.done" id="{{list._id}}" type="checkbox">
+                	<label class="checkbox-label" for="{{list._id}}" ng-click="labelClick(list)">{{editing != getIndex(list)? list.what : ""}}</label>
+                    <input ng-if="editing == getIndex(list)" class="checkbox-input" type="text" ng-blur="inputBlur(list)" focus-me="{{editing == getIndex(list)? true : false}}" ng-model="list.what" ng-keyup="inputKeyup($event)">
+                    <div class="checkbox-edit checkbox-modify" ng-if="editing != getIndex(list)" ng-click="editClick(list)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                    <div class="checkbox-delete checkbox-modify" ng-if="editing != getIndex(list)" ng-click="deleteClick(list)""><i class="fa fa-minus-square-o" aria-hidden="true"></i></div>
+                </div>
+
+                <div class="checkox" ng-click="newList()">
+                    <label class="checkbox-label"></label>
+                </div>
+
+            </div>
+
+            <button class="general-button" ng-click='removeDone()'>Remove Finished Items</button>
+        </div>
     </div>
-
-
-    <input type='text' ng-model='listWhat' onfocus='this.select()'>
-
-    <button ng-click='newList()'>Add Item</button>
-    <button ng-click='removeDone()'>Remove Finished Item</button>
 </div>

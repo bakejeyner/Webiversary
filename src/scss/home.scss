@@ -19,20 +19,10 @@
 	position: fixed;
 	height: 100vh;
 	width: 100vw;
-	left: 0px;
-	top: 0px;
-	background-color: black;
-	opacity: 0;
-	z-index: 0;
-	transition: all 1s;
-	-webkit-transition: all 1s;
-}
-.blackout.blackout-true {
-	position: fixed;
-	height: 100vh;
-	width: 100vw;
-	left: 0px;
-	top: 0px;
+	left: 0;
+	top: 0;
+	right: 0;
+	left: 0;
 	background-color: black;
 	opacity: .9;
 	z-index: 4;
@@ -173,16 +163,14 @@ $imageWidth: $polaroidWidth - 20px;
 }
 
 .polaroid.focused {
-	transition: all 1s;
-	-webkit-transition: all 1s;
+	transition: all .5s;
+	-webkit-transition: all .5s;
 	transform: none;
 	-webkit-transform: none;
 	-moz-transform: none;
 	position: fixed;
-	display: flex;
 	width: 25%;
-	justify-content: center;
-	align-items: center;
+	height: max-content;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -197,8 +185,14 @@ $imageWidth: $polaroidWidth - 20px;
 		-webkit-transform: none;
 		-moz-transform: none;
 		z-index: 5;
-		transition: all 1s;
-	    -webkit-transition: all 1s;
+		transition: all .5s;
+	    -webkit-transition: all .5s;
+	    & > p {
+	    	bottom: -10px;
+	    	font-size: 24px;
+	    	transition: all .5s;
+	        -webkit-transition: all .5s;
+	    }
 	}
 
 	&:focus {
@@ -207,8 +201,14 @@ $imageWidth: $polaroidWidth - 20px;
 		-webkit-transform: none;
 		-moz-transform: none;
 		z-index: 5;
-		transition: all 1s;
-	    -webkit-transition: all 1s;
+		transition: all .5s;
+	    -webkit-transition: all .5s;
+	    & > p {
+	    	bottom: -10px;
+	    	font-size: 24px;
+	    	transition: all .5s;
+	        -webkit-transition: all .5s;
+	    }
 	}
 }
  

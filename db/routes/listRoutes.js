@@ -61,7 +61,7 @@ module.exports = function(app) {
 
 	//route to handle put
 	app.put("/api/list", function(req, res) {
-		List.update({  _id: req.body.id }, { $set: {done: req.body.done }})
+		List.update({  _id: req.body.id }, { $set: {what: req.body.what, done: req.body.done }})
 		.exec( function (err, list) {
 			if (err)
 			{
@@ -80,6 +80,21 @@ module.exports = function(app) {
 	// route to handle delete goes here (app.delete)
 	app.delete("/api/list/done", function(req, res) {
 		List.remove({ done: true }).exec(function (err, list) {
+			if (err)
+			{
+				res.status(400);
+				res.send(err);
+				return;
+			}
+
+			res.status(200);
+			res.json("");
+			return;
+		});
+	});
+
+	app.delete("/api/list/one", function(req, res) {
+		List.remove({ _id: req.body.id }).exec(function (err, list) {
 			if (err)
 			{
 				res.status(400);

@@ -1,0 +1,224 @@
+.list {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.list-container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	overflow: auto;
+}
+
+.list-container-inner {
+	padding: 50px;
+	padding-bottom: 70px;
+}
+
+//to do list header animation
+@keyframes headerColor {
+	0% {
+		color: hsl(0, 45%, 40%);
+		text-shadow: 3px 3px 5px hsl(60, 45%, 40%);
+	}
+
+	16.7% {
+		color: hsl(60, 45%, 40%);
+		text-shadow: 3px 3px 5px hsl(120, 45%, 40%);
+	}
+
+	33.3% {
+		color: hsl(120, 45%, 40%);
+		text-shadow: 3px 3px 5px hsl(180, 45%, 40%);
+	}
+
+	50%{
+		color: hsl(180, 45%, 40%);
+		text-shadow: 3px 3px 5px hsl(240, 45%, 40%);
+	}
+
+	66.6%{
+		color: hsl(240, 45%, 40%);
+		text-shadow: 3px 3px 5px hsl(300, 45%, 40%);
+	}
+
+	83.3%{
+		color: hsl(300, 45%, 40%);
+		text-shadow: 3px 3px 5px hsl(0, 45%, 40%);
+	}
+
+	100% {
+		color: hsl(0, 45%, 40%);
+		text-shadow: 3px 3px 5px hsl(60, 45%, 40%);
+	}
+}
+
+.list-header {
+	font-size: 50px;
+	font-family: FontAwesome;
+	font-weight: bold;
+
+	animation-name: headerColor;
+	animation-duration: 12s;
+	animation-iteration-count: infinite;
+	margin-bottom: 20px;
+}
+
+
+.checkbox-container {
+	padding: 20px;
+}
+
+.checkbox {
+	position: relative;
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+}
+
+/*Adding custom checkbox icons*/
+.checkbox-label {
+	display: block;
+	height: 34px;
+	width: auto;
+	position: relative;
+	padding-left: 40px;
+	font-size: 30px;
+	cursor: pointer;
+
+	&:focus{
+		outline: 0;
+	}
+}
+.checkbox-label:before, .checkbox-label:after {
+	font-family: FontAwesome;
+	font-size: 35px;
+	/*absolutely positioned*/
+	position: absolute; top: 0; left: 0;
+}
+.checkbox-label:before {
+	content: '\f096'; /*unchecked*/
+}
+.checkbox-label:after {
+	content: '\f046'; /*checked*/
+	/*checked icon will be hidden by default by using 0 max-width and overflow hidden*/
+	max-width: 0;
+	overflow: hidden;
+	opacity: 0.3;
+	/*CSS3 transitions for animated effect*/
+	transition: all 0.5s;
+}
+
+//last child modifications
+.checkbox-container div:last-child {
+	display: inline-block;
+	transition: all 1s;
+	-webkit-transition: all 1s;
+
+	opacity: .5;
+	&:hover {
+		opacity: 1;
+	}
+}
+.checkbox-container div:last-child label:before {
+	display: inline;
+	content: "\f196"; //add
+}
+.checkbox-container div:last-child label:after {
+	display: none;
+}
+
+
+
+/*hiding the original checkboxes*/
+input[type="checkbox"] {
+	display: none;
+}
+/*when the user checks the checkbox the checked icon will animate in*/
+input[type="checkbox"]:checked + label:after {
+	max-width: 40px; /*an arbitratry number more than the icon's width*/
+	opacity: 1; /*for fade in effect*/
+}
+
+/*adding some colors for fun*/
+.checkbox-container div:nth-child(5n + 1) label {color: hsl(0, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 1) label:before {color: hsl(0, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 1) label:after {color: hsl(0, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 1) .checkbox-modify {color: hsl(0, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 1) input {color: hsl(0, 45%, 40%);}
+
+.checkbox-container div:nth-child(5n + 2) label {color: hsl(60, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 2) label:before {color: hsl(60, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 2) label:after {color: hsl(60, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 2) .checkbox-modify {color: hsl(60, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 2) input {color: hsl(60, 45%, 40%);}
+
+.checkbox-container div:nth-child(5n + 3) label {color: hsl(120, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 3) label:before {color: hsl(120, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 3) label:after {color: hsl(120, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 3) .checkbox-modify {color: hsl(120, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 3) input {color: hsl(120, 45%, 40%);}
+
+.checkbox-container div:nth-child(5n + 4) label {color: hsl(180, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 4) label:before {color: hsl(180, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 4) label:after {color: hsl(180, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 4) .checkbox-modify {color: hsl(180, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 4) input {color: hsl(180, 45%, 40%);}
+
+.checkbox-container div:nth-child(5n + 5) label {color: hsl(240, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 5) label:before {color: hsl(240, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 5) label:after {color: hsl(240, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 5) .checkbox-modify {color: hsl(240, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 5) input {color: hsl(240, 45%, 40%);}
+
+.checkbox-container div:nth-child(5n + 6) label {color: hsl(300, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 6) label:before {color: hsl(300, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 6) label:after {color: hsl(300, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 6) .checkbox-modify {color: hsl(300, 45%, 40%);}
+.checkbox-container div:nth-child(5n + 6) input {color: hsl(300, 45%, 40%);}
+
+
+//checkbox editing
+.checkbox-input {
+	display: block;
+	float: left;
+	font-family: FontAwesome;
+	font-size: 30px;
+	color: inherit;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	background: rgba(0, 0, 0, .1);
+
+	width: 75vw;
+  	height: 100%;
+
+  	&::selection {
+  		background: rgba(0, 0, 0, .5);
+	}
+}
+
+
+
+.checkbox-edit, .checkbox-delete {
+	display: inline-block;
+	height: 100%;
+	width: 40px;
+	padding-left: 10px;
+
+	font-size: 25px;
+	opacity: .5;
+	text-align: center;
+	vertical-align: middle;
+
+	cursor: pointer;
+	transition: all 1s;
+	-webkit-transition: all 1s;
+
+	&:hover {
+		font-size: 30px;
+		opacity: 1;
+	}
+}

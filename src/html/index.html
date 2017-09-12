@@ -33,7 +33,7 @@
         <div class="music-icons pause-play-song music-left" ng-click="pausePlaySong()"><div class="music-icon-inner"><i class="fa {{paused ? 'fa-play' : 'fa-pause'}}" aria-hidden="true"></i></div></div>
         <div class="music-time music-left">
             {{ floor(musicPlayer.currentTime/60) | number:00 }}:{{ floor(musicPlayer.currentTime%60) > 9 ? "" : "0" }}{{ floor(musicPlayer.currentTime%60) | number:0 }}/
-            {{ musicPlayer.duration/60 | number:0 }}:{{ musicPlayer.duration%60 | number:0 }}
+            {{ floor(musicPlayer.duration/60) | number:00 }}:{{ floor(musicPlayer.duration%60) > 9 ? "" : "0" }}{{ floor(musicPlayer.duration%60) | number:0 }}
         </div>
 
 

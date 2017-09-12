@@ -115,7 +115,7 @@
 	display: inline;
 
 	&:hover {
-	color: lightcyan;
+	color: cyan;
 	}
 
 	&:active {
@@ -173,7 +173,7 @@
 //start on modify part
 #flashcard-modify-existing-container {
 	width: 100%;
-	height: 365px;
+	height: 50vh;
 
 	position: relative;
 	top:20px;
@@ -255,11 +255,11 @@
 	font-size: 50px;
 	cursor: pointer;
 
-	transition: font-size 1s;
-	-webkit-transition: font-size 1s;
+	transition: all 1s;
+	-webkit-transition: all 1s;
 
 	&:hover {
-		color: lightcyan;
+		color: cyan;
 		font-size: 70px;
 	}
 }
